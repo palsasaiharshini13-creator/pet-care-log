@@ -1,0 +1,11 @@
+# Dependencies and secrets
+node_modules/
+backend/node_modules/
+backend/.env
+.env
+.DS_Store
+
+node_modules/
+.env
+.env.*
+!.env.example

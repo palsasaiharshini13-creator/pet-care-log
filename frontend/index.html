@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pet Care Log</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-icon">🐾</span><span>Pet Care <b>Log</b></span></a>
+    <span class="tagline">Little routines, happier pets.</span>
+  </header>
+  <main class="container">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">YOUR PET'S WELLNESS, IN ONE PLACE</p>
+        <h1>Every little detail<br><span>makes a difference.</span></h1>
+        <p class="hero-copy">Keep pet profiles, health notes, feeding routines and vet visits together in one simple log.</p>
+      </div>
+      <div class="hero-art" aria-hidden="true">🐶<span>💚</span></div>
+    </section>
+
+    <section class="stats" aria-label="Summary">
+      <article class="stat-card"><span class="stat-icon">🐾</span><div><p>Total pets</p><strong id="pet-count">0</strong></div></article>
+      <article class="stat-card"><span class="stat-icon">🩺</span><div><p>Health records</p><strong id="health-count">0</strong></div></article>
+      <article class="stat-card"><span class="stat-icon">🥣</span><div><p>Feeding logs</p><strong id="feeding-count">0</strong></div></article>
+      <article class="stat-card"><span class="stat-icon">📅</span><div><p>Upcoming visits</p><strong id="appointment-count">0</strong></div></article>
+    </section>
+
+    <section class="content-grid">
+      <aside class="panel">
+        <div class="panel-heading"><div><p class="eyebrow">GET STARTED</p><h2>Add a pet</h2></div><span class="heading-emoji">🐱</span></div>
+        <form id="pet-form">
+          <label for="pet-name">Pet name *</label><input id="pet-name" name="name" required maxlength="60" placeholder="e.g. Coco">
+          <div class="form-row">
+            <div><label for="pet-species">Species *</label><select id="pet-species" name="species" required><option value="">Choose</option><option>Dog</option><option>Cat</option><option>Bird</option><option>Rabbit</option><option>Other</option></select></div>
+            <div><label for="pet-breed">Breed</label><input id="pet-breed" name="breed" maxlength="60" placeholder="e.g. Indie"></div>
+          </div>
+          <div class="form-row">
+            <div><label for="pet-birthdate">Date of birth</label><input id="pet-birthdate" name="birth_date" type="date"></div>
+            <div><label for="pet-weight">Weight (kg)</label><input id="pet-weight" name="weight_kg" type="number" min="0" max="500" step="0.1" placeholder="e.g. 4.5"></div>
+          </div>
+          <label for="pet-notes">Notes</label><textarea id="pet-notes" name="notes" rows="2" maxlength="500" placeholder="Favourite toy, allergies to discuss with your vet..."></textarea>
+          <button class="primary-button" type="submit">+ Save pet profile</button>
+          <p class="form-message" id="pet-message" role="status"></p>
+        </form>
+      </aside>
+
+      <section class="panel records-panel">
+        <div class="panel-heading"><div><p class="eyebrow">YOUR COMPANIONS</p><h2>Pet profiles</h2></div><input id="pet-search" class="search" type="search" placeholder="Search pets..." aria-label="Search pets"></div>
+        <div id="pets-list" class="pets-list"><div class="empty-state"><span>🐾</span><h3>Your pet list starts here</h3><p>Add a pet using the form to create your first profile.</p></div></div>
+      </section>
+    </section>
+
+    <section class="panel log-panel">
+      <div class="panel-heading"><div><p class="eyebrow">DAILY ROUTINE & WELLNESS</p><h2>Add a care record</h2></div><span class="heading-emoji">📝</span></div>
+      <form id="record-form" class="record-form">
+        <div><label for="record-pet">Pet *</label><select id="record-pet" name="pet_id" required><option value="">Add a pet first</option></select></div>
+        <div><label for="record-type">Record type *</label><select id="record-type" name="type" required><option value="health">Health / vaccination</option><option value="feeding">Feeding</option><option value="appointment">Vet appointment</option><option value="medication">Medication</option><option value="grooming">Grooming</option></select></div>
+        <div><label for="record-date">Date *</label><input id="record-date" name="record_date" type="date" required></div>
+        <div><label for="record-title">Title *</label><input id="record-title" name="title" required maxlength="100" placeholder="e.g. Morning meal"></div>
+        <div class="wide"><label for="record-details">Details</label><textarea id="record-details" name="details" rows="2" maxlength="1000" placeholder="Add useful details..."></textarea></div>
+        <div><label for="record-next-date">Next date (optional)</label><input id="record-next-date" name="next_date" type="date"></div>
+        <div class="wide"><button class="primary-button" type="submit">+ Save care record</button></div>
+        <p class="form-message wide" id="record-message" role="status"></p>
+      </form>
+    </section>
+
+    <section class="panel history-panel">
+      <div class="panel-heading"><div><p class="eyebrow">RECENT ACTIVITY</p><h2>Care history</h2></div><select id="history-filter" class="filter" aria-label="Filter care history"><option value="all">All records</option><option value="health">Health</option><option value="feeding">Feeding</option><option value="appointment">Appointments</option><option value="medication">Medication</option><option value="grooming">Grooming</option></select></div>
+      <div id="records-list" class="records-list"><div class="empty-state compact"><span>📔</span><p>Your saved care records will appear here.</p></div></div>
+    </section>
+    <footer>Made with care for the pets who make our lives brighter. <span>Pet Care Log · Student project</span></footer>
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
